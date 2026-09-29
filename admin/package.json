@@ -1,0 +1,12 @@
+{
+  "name": "coin-rich-admin",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Admin workspace business logic and HTTP API for Coin Rich.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node src/app.js",
+    "test": "node --test test/foundation.test.js"
+  }
+}
